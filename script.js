@@ -1,4 +1,4 @@
-//js script for account signup
+// JS script for account signup
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('registration-form');
     const feedbackDiv = document.getElementById('form-feedback');
@@ -18,9 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
             messages.push('Username must be at least 3 characters long.');
         }
 
-        if (!email.includes('@') || !email.includes('.')) {
+        // Improved email validation with regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
             isValid = false;
-            messages.push('Email must contain @ and . characters.');
+            messages.push('Enter a valid email address.');
         }
 
         if (password.length < 8) {
